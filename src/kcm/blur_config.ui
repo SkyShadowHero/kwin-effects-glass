@@ -693,7 +693,7 @@
              <item>
               <widget class="QCheckBox" name="kcfg_CacheWallpaperBlur">
                <property name="text">
-                <string>Cache blurred wallpaper, refresh every</string>
+                <string>X-Ray desktop blur</string>
                </property>
               </widget>
              </item>
@@ -719,35 +719,35 @@
            <item>
             <widget class="QCheckBox" name="kcfg_CacheExcludeDocks">
              <property name="text">
-              <string>Don't apply cache to docks</string>
+               <string>Don't apply X-Ray to docks</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="kcfg_CacheExcludeDecorations">
              <property name="text">
-              <string>Don't apply cache to decorations</string>
+               <string>Don't apply X-Ray to decorations</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="kcfg_CacheExcludeTooltips">
              <property name="text">
-              <string>Don't apply cache to tooltips</string>
+               <string>Don't apply X-Ray to tooltips</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="kcfg_CacheExcludeMenus">
              <property name="text">
-              <string>Don't apply cache to menus</string>
+               <string>Don't apply X-Ray to menus</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="kcfg_CacheExcludeNotificationsAndOSD">
              <property name="text">
-              <string>Don't apply cache to notifications and OSD</string>
+               <string>Don't apply X-Ray to notifications and OSD</string>
              </property>
             </widget>
            </item>
