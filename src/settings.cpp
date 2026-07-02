@@ -97,7 +97,6 @@ void BlurSettings::read()
     refraction.refractionBevelIntensity = BlurConfig::refractionBevelIntensity() / 10.0;
     refraction.physicallyBased = BlurConfig::physicallyBasedRefraction();
     general.cacheWallpaperBlur = BlurConfig::cacheWallpaperBlur();
-    general.wallpaperCacheRefresh = BlurConfig::wallpaperCacheRefresh();
     general.cacheExcludeDocks = BlurConfig::cacheExcludeDocks();
     general.cacheExcludeDecorations = BlurConfig::cacheExcludeDecorations();
     general.cacheExcludeTooltips = BlurConfig::cacheExcludeTooltips();

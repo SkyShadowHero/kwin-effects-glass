@@ -90,7 +90,6 @@ public:
     static bool enabledByDefault();
 
     void reconfigure(ReconfigureFlags flags) override;
-    void rebuildWallpaperCache(LogicalOutput *output);
 #ifdef GLASS_KWIN_67
     void prePaintScreen(ScreenPrePaintData &data) override;
 
@@ -156,14 +155,6 @@ private:
     GLTexture *ensureNoiseTexture(int noiseStrength);
     QMatrix4x4 colorMatrix(const float &brightness, const float &saturation, const float &contrast) const;
     BlurPipelineSettings pipelineSettingsForStrength(int blurStrength, int noiseStrength) const;
-
-    struct WallpaperCacheEntry
-    {
-        EffectWindow *desktopWindow = nullptr;
-        std::unique_ptr<GLTexture> texture;
-        QSize size;
-        bool dirty = true;
-    };
 
 private:
     struct
@@ -270,6 +261,8 @@ private:
 #endif
     QMap<EffectWindow *, QMetaObject::Connection> windowFrameGeometryChangedConnections;
     std::unordered_map<EffectWindow *, BlurEffectData> m_windows;
+    QMap<EffectWindow *, QMetaObject::Connection> desktopGeometryConnections;
+    QMap<EffectWindow *, QMetaObject::Connection> desktopDamageConnections;
 
 #if !defined(GLASS_X11) && !defined(GLASS_KWIN_67)
     static BlurManagerInterface *s_blurManager;
@@ -279,7 +272,9 @@ private:
     static QTimer *s_contrastManagerRemoveTimer;
 #endif
 
-    std::map<LogicalOutput *, std::unique_ptr<WallpaperCacheEntry>> m_wallpaperCaches;
+    // Desktop window reference + texture for real-time wallpaper blur input.
+    EffectWindow *m_desktopWindow = nullptr;
+    std::unique_ptr<GLTexture> m_wallpaperTexture;
 };
 
 inline bool BlurEffect::provides(Effect::Feature feature)
